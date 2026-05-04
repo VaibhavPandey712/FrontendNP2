@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://backendnp2.onrender.com'
 
 const api = {
   get: async (url, options = {}) => {
