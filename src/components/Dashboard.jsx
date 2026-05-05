@@ -15,9 +15,9 @@ export default function Dashboard({ logout, user }) {
 
   const fetchQuestions = async () => {
     try {
-        const [lcRes, cfRes] = await Promise.all([
-          fetch('/api/questions/leetcode', { credentials: 'include' }).then(r => r.ok ? r.json() : []),
-          fetch('/api/questions/codeforces', { credentials: 'include' }).then(r => r.ok ? r.json() : [])
+const [lcRes, cfRes] = await Promise.all([
+          api.get('/api/questions/leetcode').then(r => r.ok ? r.json() : []),
+          api.get('/api/questions/codeforces').then(r => r.ok ? r.json() : [])
         ])
       setLeetCodeQuestions(lcRes.sort((a, b) => a.title - b.title))
       setCodeforcesQuestions(cfRes.sort((a, b) => a.title - b.title))

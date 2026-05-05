@@ -9,9 +9,8 @@ export default function QuestionList({ questions, platform, onRefresh }) {
     const deleteQuestion = async (id) => {
       if (!confirm('Delete this question?')) return
       try {
-        const response = await fetch(`/api/questions/${id}`, { 
-          method: 'DELETE',
-          credentials: 'include'
+const response = await api.post(`/api/questions/${id}`, { 
+          _method: 'DELETE'
         })
         if (!response.ok) throw new Error('Delete failed')
         onRefresh()

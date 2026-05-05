@@ -14,12 +14,15 @@ function App() {
     checkAuth()
   }, [])
 
-  const checkAuth = async () => {
+const checkAuth = async () => {
     try {
-      const response = await api.get('/api/auth/login', { credentials: 'include' })
+      const response = await api.get('/api/auth/me', { credentials: 'include' })
       if (response.ok) {
-        setUser({ username: response.username })
+        const data = await response.json()
+        setUser(data)
         navigate('/dashboard')
+      } else {
+        navigate('/')
       }
     } catch {
       navigate('/')
