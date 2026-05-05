@@ -16,7 +16,7 @@ function App() {
 
 const checkAuth = async () => {
     try {
-      const response = await api.get('/api/auth/me', { credentials: 'include' })
+      const response = await api.get('/api/auth/me')
       if (response.ok) {
         const data = await response.json()
         setUser(data)
